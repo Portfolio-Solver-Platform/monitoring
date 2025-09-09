@@ -1,0 +1,30 @@
+apiVersion: skaffold/v4beta13
+kind: Config
+metadata:
+  name: monitoring-skaffold
+
+profiles:
+  - name: dev
+    activation:
+      - command: dev
+    deploy:
+      helm:
+        releases:
+          - name: monitoring
+            chartPath: helm
+            namespace: monitoring
+            createNamespace: true
+
+  - name: prod
+    deploy:
+      helm:
+        releases:
+          - name: monitoring
+            chartPath: helm
+            namespace: monitoring
+            createNamespace: true
+            valuesFiles:
+              - helm/values-prod.yaml
+            wait: true
+            upgradeOnChange: true
+
