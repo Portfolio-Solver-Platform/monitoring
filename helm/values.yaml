@@ -1,6 +1,9 @@
 kube-prometheus-stack:
   grafana:
-    adminPassword: "admin"
+    admin:
+      existingSecret: grafana-admin-creds
+      userKey: user
+      passwordKey: password
   prometheus:
     prometheusSpec:
       # false = make it discover ServiceMonitor resources from the same
