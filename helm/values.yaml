@@ -1,1 +1,23 @@
+grafana:
+  admin:
+    username: admin
+    password: admin
 
+serviceMonitors:
+  standard:
+    namespace: default
+    port: http
+    path: /metrics
+    interval: 30s
+
+kube-prometheus-stack:
+  grafana:
+    admin:
+      existingSecret: grafana-admin-creds
+      userKey: user
+      passwordKey: password
+  prometheus:
+    prometheusSpec:
+      # false = make it discover ServiceMonitor resources from the same
+      #         namespace as the Prometheus operator automatically.
+      serviceMonitorSelectorNilUsesHelmValues: false

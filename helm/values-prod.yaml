@@ -1,0 +1,4 @@
+grafana:
+  admin:
+    username: {{ .GRAFANA_ADMIN_USERNAME }}
+    password: {{ .GRAFANA_ADMIN_PASSWORD }}
