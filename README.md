@@ -15,5 +15,5 @@ If a service should be monitored, then it should be given the Kubernetes label `
 > metrics on the `/metrics` path on the endpoint named `http` in the Prometheus format.
 > This only works if the service is in the `default` namespace.
 
-In development, the admin account for Grafana has username `admin` and password `admin`.
+The development credentials for Grafana can be found in `helm/values.yaml`.
 

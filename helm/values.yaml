@@ -1,3 +1,8 @@
+grafana:
+  admin:
+    username: admin
+    password: admin
+
 kube-prometheus-stack:
   grafana:
     admin:
