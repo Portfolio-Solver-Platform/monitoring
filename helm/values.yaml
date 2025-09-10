@@ -1,1 +1,8 @@
-
+kube-prometheus-stack:
+  grafana:
+    adminPassword: "admin"
+  prometheus:
+    prometheusSpec:
+      # false = make it discover ServiceMonitor resources from the same
+      #         namespace as the Prometheus operator automatically.
+      serviceMonitorSelectorNilUsesHelmValues: false
