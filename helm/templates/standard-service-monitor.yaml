@@ -10,8 +10,8 @@ spec:
       monitoring: standard
   namespaceSelector:
     matchNames:
-      - default
+      - {{ .Values.serviceMonitors.standard.namespace }}
   endpoints:
-    - port: http
-      path: /metrics
-      interval: 30s
+    - port: {{ .Values.serviceMonitors.standard.port }}
+      path: {{ .Values.serviceMonitors.standard.path }}
+      interval: {{ .Values.serviceMonitors.standard.interval }}

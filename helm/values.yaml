@@ -3,6 +3,13 @@ grafana:
     username: admin
     password: admin
 
+serviceMonitors:
+  standard:
+    namespace: default
+    port: http
+    path: /metrics
+    interval: 30s
+
 kube-prometheus-stack:
   grafana:
     admin:
