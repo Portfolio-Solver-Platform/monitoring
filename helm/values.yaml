@@ -16,6 +16,11 @@ kube-prometheus-stack:
       existingSecret: grafana-admin-creds
       userKey: user
       passwordKey: password
+    grafana.ini:
+      server:
+        # Serve it on path
+        root_url: "/grafana/"
+        serve_from_sub_path: true
   prometheus:
     prometheusSpec:
       # false = make it discover ServiceMonitor resources from the same
