@@ -5,7 +5,8 @@ It uses Prometheus and Grafana.
 
 ## Usage
 
-Run `skaffold dev` to launch the monitoring in development mode.
+First, you need to run `bootstrap.sh`.
+Then, run `skaffold dev` to launch the monitoring in development mode.
 For production, use `skaffold run -p prod`.
 
 If a service should be monitored, then it should be given the Kubernetes label `monitoring=standard`.
