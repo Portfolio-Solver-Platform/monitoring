@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: keycloak
+{{ toYaml .Values.serviceMonitors.keycloak.selectorLabels | indent 6 }}
   namespaceSelector:
     matchNames:
       - {{ .Values.serviceMonitors.keycloak.namespace }}
