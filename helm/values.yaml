@@ -9,6 +9,13 @@ serviceMonitors:
     port: http
     path: /metrics
     interval: 30s
+  keycloak:
+    namespace: keycloak
+    port: http
+    path: /keycloak/metrics
+    interval: 30s
+    selectorLabels:
+      app: keycloak
 
 kube-prometheus-stack:
   grafana:
