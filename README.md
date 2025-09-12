@@ -18,3 +18,7 @@ If a service should be monitored, then it should be given the Kubernetes label `
 
 The development credentials for Grafana can be found in `helm/values.yaml`.
 
+## Dashboards
+
+- For Keycloak, the following dashboard may be good: https://grafana.com/grafana/dashboards/14390-keycloak-metrics/
+
