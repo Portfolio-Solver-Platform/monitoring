@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: ztunnel
+spec:
+  selector:
+    matchLabels:
+      app: ztunnel
+  namespaceSelector:
+    matchNames:
+      - {{ .Values.monitors.istio.namespace }}
+  podMetricsEndpoints:
+  - port: {{ .Values.monitors.istio.ztunnel.port }}
+    interval: {{ .Values.monitors.default.interval }}

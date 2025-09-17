@@ -7,6 +7,13 @@ monitors:
   default:
     interval: 30s
 
+  istio:
+    namespace: istio-system
+    ztunnel:
+      port: ztunnel-stats
+    istiod:
+      port: http-monitoring
+
 serviceMonitors:
   standard:
     namespace: default
