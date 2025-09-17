@@ -3,6 +3,10 @@ grafana:
     username: admin
     password: admin
 
+monitors:
+  default:
+    interval: 30s
+
 serviceMonitors:
   standard:
     namespace: default
@@ -25,6 +29,11 @@ kube-prometheus-stack:
       passwordKey: password
   prometheus:
     prometheusSpec:
+      retention: 5d # How long to retain metrics
+      retentionSize: "1GiB" # Max size of metrics
       # false = make it discover ServiceMonitor resources from the same
       #         namespace as the Prometheus operator automatically.
       serviceMonitorSelectorNilUsesHelmValues: false
+      # false = make it discover PodMonitor resources from the same
+      #         namespace as the Prometheus operator automatically.
+      podMonitorSelectorNilUsesHelmValues: false
