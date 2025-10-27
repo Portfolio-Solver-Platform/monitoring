@@ -16,7 +16,7 @@ monitors:
 
 serviceMonitors:
   standard:
-    namespace: default
+    namespace: psp
     port: http
     path: /metrics
     interval: 30s
