@@ -27,6 +27,10 @@ serviceMonitors:
     interval: 30s
     selectorLabels:
       app: keycloak
+  rabbitmq:
+    namespace: rabbit-mq
+    clusterName: rabbitmq
+    interval: 30s
 
 kube-prometheus-stack:
   grafana:
