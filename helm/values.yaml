@@ -1,8 +1,3 @@
-grafana:
-  admin:
-    username: admin
-    password: admin
-
 monitors:
   default:
     interval: 30s
@@ -35,8 +30,8 @@ serviceMonitors:
 kube-prometheus-stack:
   grafana:
     admin:
-      existingSecret: grafana-admin-creds
-      userKey: user
+      existingSecret: grafana-admin-credentials
+      userKey: username
       passwordKey: password
   prometheus:
     prometheusSpec:
