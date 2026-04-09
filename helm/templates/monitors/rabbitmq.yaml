@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rabbitmq
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.serviceMonitors.rabbitmq.clusterName }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Values.serviceMonitors.rabbitmq.namespace }}
+  endpoints:
+    - port: prometheus
+      path: /metrics
+      interval: {{ .Values.serviceMonitors.rabbitmq.interval }}
+    - port: prometheus
+      path: /metrics/per-object
+      interval: {{ .Values.serviceMonitors.rabbitmq.interval }}

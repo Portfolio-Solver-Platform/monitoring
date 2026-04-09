@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-dlq
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: rabbitmq.dlq
+      rules:
+        - alert: MessageInDLQ
+          expr: rabbitmq_queue_messages{queue=~".*\\.dlq"} > 0
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Messages stuck in DLQ"
+            description: "{{ "{{ $value }}" }} messages in {{ "{{ $labels.queue }}" }}"

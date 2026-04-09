@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-dlq-dashboard
+  labels:
+    grafana_dashboard: "1"
+data:
+  rabbitmq-dlq.json: |
+    {
+      "title": "RabbitMQ DLQ",
+      "uid": "rabbitmq-dlq",
+      "tags": ["rabbitmq"],
+      "schemaVersion": 38,
+      "panels": [
+        {
+          "title": "DLQ Message Depth",
+          "type": "timeseries",
+          "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+          "datasource": { "type": "prometheus" },
+          "fieldConfig": {
+            "defaults": { "unit": "short", "min": 0 }
+          },
+          "options": {
+            "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }
+          },
+          "targets": [
+            {
+              "expr": "rabbitmq_queue_messages{queue=~\".*\\\\.dlq\"}",
+              "legendFormat": "{{ "{{queue}}" }}",
+              "refId": "A"
+            }
+          ]
+        }
+      ]
+    }
